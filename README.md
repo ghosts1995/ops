@@ -46,7 +46,13 @@ wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/instal
 wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/yumInstallnginx.sh | bash
 
 ````
+## yum 安装php7.2.x
 
+````text
+
+wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/yumInstallPhp72.sh | bash
+
+````
 
 # 建议安装screen,避免网络抖动
 yum -y install screen
