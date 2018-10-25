@@ -1,7 +1,7 @@
 #!/bin/bash
 
 yum -y install epel-release
-yum -y install wget jwhois bind-utils tmux screen
+yum -y install wget jwhois bind-utils tmux screen mrt
 
 rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 yum --enablerepo=remi-php72 -y install php-fpm php-common
