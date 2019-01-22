@@ -36,7 +36,7 @@ groupadd -r devtoin && useradd -r -g devtoin -s /bin/false -d
 
 yum install epel-release -y
 yum  -y update
-yum -y install gcc gcc-c++ make cmake automake autoconf m4 kernel-devel ncurses-devel libxml2-devel openssl openssl-devel libicu libicu-devel curl-devel libjpeg-devel libpng-devel pcre pcre-devel libtool-libs freetype-devel gd zlib-devel file bison patch mlocate flex diffutils readline-devel glibc-devel glib2-devel bzip2-devel gettext-devel libcap-devel libmcrypt-devel openldap openldap-devel libxslt-devel libtidy-devel libtidy vim
+yum -y install gcc gcc-c++ make cmake automake autoconf m4 kernel-devel ncurses-devel libxml2-devel openssl openssl-devel libicu libicu-devel curl-devel libjpeg-devel libpng-devel pcre pcre-devel libtool-libs freetype-devel gd zlib-devel file bison patch mlocate flex diffutils readline-devel glibc-devel glib2-devel bzip2-devel gettext-devel libcap-devel libmcrypt-devel openldap openldap-devel libxslt-devel libtidy-devel libtidy
 
 
 #set php version

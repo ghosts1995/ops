@@ -24,15 +24,15 @@ sed -i 's/short_open_tag =.*/short_open_tag = On/g' /etc/php.ini
 sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /etc/php.ini
 
 #set composer
-curl -sS https://getcomposer.org/installer | php -- --help
+curl -sS https://getcomposer.org/installer | php 
 mv /usr/local/src/composer.phar /usr/bin/composer
 chmod +x /usr/bin/composer
 composer config -g repos.packagist composer https://php.cnpkg.org
-
 composer --version
 
-php --ri swoole
-php --ri nsq
-ulimit -n 100000
-
-wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+#
+# php --ri swoole
+# php --ri nsq
+# ulimit -n 100000
+#
+# wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
