@@ -6,10 +6,10 @@ yum -y install wget git jwhois bind-utils tmux screen mtr traceroute
 yum -y install epel-release
 
 rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-yum --enablerepo=remi-php72 -y install php-fpm php-common
-yum --enablerepo=remi-php72 -y install php-opcache php-pecl-apcu php-cli \
+yum --enablerepo=remi-php73 -y install php-fpm php-common
+yum --enablerepo=remi-php73 -y install php-opcache php-pecl-apcu php-cli \
 php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongodb php-pecl-redis php-pecl-memcache php-pecl-memcached \
-php-pecl-swoole php-pecl-seaslog php-pecl-libsodium2 php-pecl-nsq php-gd php-mbstring php-imap php-mcrypt php-xml php-devel
+php-pecl-swoole4 php-pecl-seaslog php-pecl-libsodium2 php-pecl-nsq php-gd php-mbstring php-imap php-mcrypt php-xml php-devel
 
 
 sed -i 's/;phar.readonly=.*/phar.readonly = Off/g' /etc/php.ini
@@ -27,12 +27,10 @@ sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /etc/php.ini
 curl -sS https://getcomposer.org/installer | php 
 mv /usr/local/src/composer.phar /usr/bin/composer
 chmod +x /usr/bin/composer
-composer config -g repos.packagist composer https://php.cnpkg.org
+
 composer --version
 
-#
-# php --ri swoole
-# php --ri nsq
-# ulimit -n 100000
-#
-# wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+
+php --ri swoole
+
+ulimit -n 100000
