@@ -48,7 +48,7 @@ wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/instal
 
 ````text
 
-wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/yumInstallnginx.sh | bash
+wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/inginx.sh | bash
 
 ````
 
