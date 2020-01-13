@@ -2,6 +2,14 @@
 
 ## 防火墙相关
 
+
+### 选择安装
+
+```text
+wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/i.sh | bash
+```
+
+
 ##### 设置iptables端口流量转发
 
 ````text
