@@ -40,7 +40,7 @@ case $HOSTNAME in
  "py37") wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/ipy3-7-5.sh | bash && source /etc/profile
 ;;
 
- "go1136") wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igo.sh | bash && source /etc/bashrc
+ "go1136") wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igo.sh | bash && source /etc/profile
 ;;
 
 	 *) echo "Can't find the related server name"
