@@ -78,6 +78,12 @@ wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/ipy3-7
 
 ````
 
+> golang install in version 1.13.6
+
+````text
+wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igo.sh | bash && source /etc/bashrc
+
+````
 
 ### 建议安装screen,避免网络抖动
 
