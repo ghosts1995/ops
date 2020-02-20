@@ -9,7 +9,6 @@
 wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/i.sh | bash
 ```
 
-
 ##### 设置iptables端口流量转发
 
 ````text
@@ -86,31 +85,25 @@ wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/ipy3-7
 
 ````
 
-> golang install in version 1.13.6
+> golang install in version 1.13.8
 
 ````text
-wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igo.sh | bash && source /etc/profile
+wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igo.sh | bash && source /etc/bashrc && go env
 
 ````
 
 ### 建议安装screen,避免网络抖动
 
+````text
 yum -y install screen
 
 > 创建一个screen
-
 screen -S logInstall
-
 > 恢复会话
-
 screen -r logInstall
-
 > 当前进行的会话
-
 screen -ls
-
 > ps
-````text
-mac out 快捷健
+> mac & osx out 快捷健
 control +a +d
 ```` 
