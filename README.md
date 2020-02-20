@@ -103,7 +103,15 @@ screen -S logInstall
 screen -r logInstall
 > 当前进行的会话
 screen -ls
-> ps
+
 > mac & osx out 快捷健
 control +a +d
 ```` 
+
+### init
+```text
+yum -y install epel-release && yum -y update
+yum -y install wget git jwhois bind-utils tmux screen mtr traceroute
+
+```
+
