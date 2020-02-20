@@ -11,9 +11,9 @@ mkdir -p /root/go/pkg
 
 
 #input evn info
-echo "export GO111MODULE=auto" >> /etc/bashrc
-echo "export GOROOT=/usr/local/go" >> /etc/bashrc
-echo "export GOPATH=/root/go"  >> /etc/bashrc
-echo "export PATH=$PATH:$GOROOT/bin:$GOPATH/bin" >> /etc/bashrc
+echo "export GO111MODULE=auto" >> /etc/profile
+echo "export GOROOT=/usr/local/go" >> /etc/profile
+echo "export GOPATH=/root/go"  >> /etc/profile
+echo "export PATH=$PATH:$GOROOT/bin:$GOPATH/bin" >> /etc/profile
 
 #cat go env 

@@ -88,7 +88,7 @@ wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/ipy3-7
 > golang install in version 1.13.8
 
 ````text
-wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igo.sh | bash && source /etc/bashrc && go env
+wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igo.sh | bash && source /etc/profile && go env
 
 ````
 
