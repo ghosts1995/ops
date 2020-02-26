@@ -2,7 +2,7 @@
 
 cd /usr/local/src
 
-version='2.9.5'
+version='2.21.1'
 
 yum install -y gcc
 yum install -y gcc-c++

@@ -18,11 +18,11 @@ wget --no-check-certificate https://raw.githubusercontent.com/ghosts1995/ops/mas
 
 ## 工具安装
 
-> 安装git2.9.5
+> 安装git2.21.1
 
 ````text
 
-wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/gitInstall.sh | bash && source /etc/bashrc && git --version
+wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igit.sh | bash && source /etc/bashrc && git --version
 
 ````
 
