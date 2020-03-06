@@ -10,10 +10,6 @@ mkdir -p /root/go/bin
 mkdir -p /root/go/pkg
 
 
-#input evn info
-echo "export GO113MODULE=auto" >> /etc/profile
-echo "export GOROOT=/usr/local/go" >> /etc/profile
-echo "export GOPATH=/root/go"  >> /etc/profile
-echo "export PATH=$PATH:$GOROOT/bin:$GOPATH/bin" >> /etc/profile
-
-#cat go env 
+export GOROOT=/usr/local/go
+export GOPATH=/root/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

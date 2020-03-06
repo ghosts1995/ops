@@ -77,11 +77,11 @@ wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/iphp7.
 ````
 
 
-> centos7.x 安装python3.7.5
+> centos7.x 安装python3.7.6
 
 ````text
 
-wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/ipy3-7-5.sh | bash && source /etc/profile
+wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/ipy3-7-6.sh | bash && source /etc/profile
 
 ````
 
