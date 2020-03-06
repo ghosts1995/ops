@@ -25,10 +25,16 @@ yum -y install wget jwhois bind-utils tmux screen mtr traceroute
 >>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igit.sh | bash && source /etc/bashrc && git --version
 
 >> install nvm and node to npm
->>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/invm.sh
+>>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/invm.sh | bash && source ~/.bash_profile
+
 
 >> install docker and docker-compose
->>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/idocker
+>>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/idocker | bash
+
+> set elang
+>>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/elang.sh | bash
+
+***
 
 > 开发类
 >> 编译安装 php7.2.11
