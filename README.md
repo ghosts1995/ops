@@ -34,6 +34,10 @@ yum -y install wget jwhois bind-utils tmux screen mtr traceroute
 > set elang
 >>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/elang.sh | bash
 
+
+> install fs1.6
+>>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/ifs1.6.sh | bash
+
 ***
 
 > 开发类
