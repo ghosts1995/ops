@@ -1,5 +1,8 @@
 #!/bin/bash
-yum -y install bind-utils jwhois mtr traceroute tcpdump tshark
+
+yum -y install epel-release 
+yum -y update
+yum -y install wget bind-utils jwhois mtr traceroute tcpdump tshark
 yum install -y https://files.freeswitch.org/repo/yum/centos-release/freeswitch-release-repo-0-1.noarch.rpm
 yum install -y freeswitch-config-vanilla freeswitch-lang-* freeswitch-sounds-*
 
