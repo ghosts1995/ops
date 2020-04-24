@@ -10,7 +10,6 @@ yum -y install wget jwhois bind-utils tmux screen mtr traceroute tcpdump tshark
 >> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/i.sh | bash
 ***
 
-
 > 工具类
 >> dl iptables端口流量转发
 >>> wget --no-check-certificate https://raw.githubusercontent.com/ghosts1995/ops/master/install/iptablesForward.sh && chmod +x iptablesForward.sh && ./iptablesForward.sh
@@ -58,6 +57,13 @@ yum -y install wget jwhois bind-utils tmux screen mtr traceroute tcpdump tshark
 
 >> golang install in version 1.13.8
 >>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igo.sh | bash && source /etc/profile && go env
+
+
+### fs 
+
+```text
+curl -s https://raw.githubusercontent.com/ghosts1995/ops/master/iremFs.sh | bash
+```
 
 
 ### 建议安装screen,避免网络抖动
