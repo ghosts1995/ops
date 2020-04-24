@@ -38,6 +38,8 @@ ln -sf /usr/local/freeswitch/bin/fs_cli /usr/bin/
 
 echo "load server"
 
+touch /usr/lib/systemd/system/freeswitch.service
+
 tee /usr/lib/systemd/system/freeswitch.service <<-'EOF'
 
 [Unit]
@@ -57,6 +59,8 @@ Restart=always
 WantedBy=multi-user.target graphical.target
 
 EOF
+
+echo "load system service"
 
 systemctl --system daemon-reload
 

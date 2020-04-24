@@ -2,7 +2,7 @@
 > init
 ```text
 yum -y install epel-release && yum -y update
-yum -y install wget jwhois bind-utils tmux screen mtr traceroute
+yum -y install wget jwhois bind-utils tmux screen mtr traceroute tcpdump
 ```
 
 ### 选择安装
