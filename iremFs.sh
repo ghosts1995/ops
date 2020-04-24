@@ -1,6 +1,10 @@
 #!/bin/bash
 
-yum -y insyall screen 
+file="/usr/bin/screen"
+
+if [ ! -f $file ]; then
+  yum -y insyall screen 
+fi
 
 cd /usr/local/src
 
