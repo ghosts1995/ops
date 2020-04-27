@@ -1,5 +1,8 @@
 #!/bin/bash
 
+touch /var/log/voip.log
+touch /var/log/voipAddr.log
+
 serverId=$1
 echo $serverId > /var/log/voip.log
 
