@@ -1,8 +1,10 @@
 #!/bin/bash
 
 serverId=$1
-
 echo $serverId > /var/log/voip.log
+
+serverAddr=$2
+echo $serverAddr > /var/log/voipAddr.log
 
 file="/usr/bin/screen"
 
@@ -18,7 +20,6 @@ screen -dmS $screen_name
 cmd=$"curl -s https://raw.githubusercontent.com/ghosts1995/ops/master/install/iyfs1-10.sh | bash";
 screen -x -S $screen_name -p 0 -X stuff "$cmd"
 screen -x -S $screen_name -p 0 -X stuff $'\n'
-
 
 echo $(sed -n 1p /var/log/voip.log)
 

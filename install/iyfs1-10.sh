@@ -12,3 +12,13 @@ rpm -ivh https://files.freeswitch.org/repo/yum/centos-release/7/x86_64/freeswitc
 systemctl enable freeswitch
 
 curl -s https://raw.githubusercontent.com/ghosts1995/ops/master/install/igit.sh | bash && source /etc/bashrc && git --version
+
+serverId=$(sed -n 1p /var/log/voip.log)
+serverAddr=$(sed -n 1p /var/log/voipAddr.log)
+
+echo $serverId
+echo $serverAddr
+
+
+# vars=$(curl -s "$serverAddr/api/v1/server/cfg?id=$serverId&file=vars")
+# echo $vars
