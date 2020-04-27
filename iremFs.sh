@@ -9,13 +9,12 @@ echo $serverId > /var/log/voip.log
 serverAddr=$2
 echo $serverAddr > /var/log/voipAddr.log
 
-yum -y insyall screen 
 
-#file="/usr/bin/screen"
+file="/usr/bin/screen"
 
-#if [ ! -f $file ]; then
-#  yum -y insyall screen 
-#fi
+if [ ! -f $file ]; then
+ yum -y install screen 
+fi
 
 cd /usr/local/src
 
