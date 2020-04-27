@@ -38,3 +38,5 @@ curl -o /etc/freeswitch/autoload_configs/xml_curl.conf.xml "$serverAddr/init/$se
 chown -R freeswitch:daemon /etc/freeswitch
 
 curl -s /etc/freeswitch/autoload_configs/xml_curl.conf.xml "$serverAddr/init/$serverId/install"
+
+systemctl start freeswitch
