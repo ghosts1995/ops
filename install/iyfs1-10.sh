@@ -32,11 +32,17 @@ rm -rf /etc/freeswitch/autoload_configs/format_cdr.conf.xml
 curl -o /etc/freeswitch/autoload_configs/format_cdr.conf.xml "$serverAddr/init/$serverId/cdr"
 
 rm -rf /etc/freeswitch/autoload_configs/xml_curl.conf.xml
-# xmlCurl=$(curl -s "$serverAddr/api/v1/server/cfg?id=$serverId&file=curl")
 curl -o /etc/freeswitch/autoload_configs/xml_curl.conf.xml "$serverAddr/init/$serverId/curl"
 
-chown -R freeswitch:daemon /etc/freeswitch
 
-curl -s /etc/freeswitch/autoload_configs/xml_curl.conf.xml "$serverAddr/init/$serverId/install"
+rm -rf /etc/freeswitch/autoload_configs/event_socket.conf.xml
+curl -o /etc/freeswitch/autoload_configs/event_socket.conf.xml "$serverAddr/init/$serverId/es"
+
+
+echo "install done"
+
+curl -s "$serverAddr/init/$serverId/install"
+
+chown -R freeswitch:daemon /etc/freeswitch
 
 systemctl start freeswitch
