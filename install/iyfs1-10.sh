@@ -20,24 +20,19 @@ echo $serverId
 echo $serverAddr
 
 rm -rf /etc/freeswitch/vars.xml
-# vars=$(curl -s "$serverAddr/api/v1/server/cfg?id=$serverId&file=vars")
 curl -o /etc/freeswitch/vars.xml "$serverAddr/init/$serverId/vars"
 
 rm -rf /etc/freeswitch/autoload_configs/modules.conf.xml
-# modules=$(curl -s "$serverAddr/api/v1/server/cfg?id=$serverId&file=modules")
 curl -o /etc/freeswitch/autoload_configs/modules.conf.xml "$serverAddr/init/$serverId/modules"
 
 rm -rf /etc/freeswitch/autoload_configs/format_cdr.conf.xml
-# cdr=$(curl -s "$serverAddr/api/v1/server/cfg?id=$serverId&file=cdr")
 curl -o /etc/freeswitch/autoload_configs/format_cdr.conf.xml "$serverAddr/init/$serverId/cdr"
 
 rm -rf /etc/freeswitch/autoload_configs/xml_curl.conf.xml
 curl -o /etc/freeswitch/autoload_configs/xml_curl.conf.xml "$serverAddr/init/$serverId/curl"
 
-
 rm -rf /etc/freeswitch/autoload_configs/event_socket.conf.xml
 curl -o /etc/freeswitch/autoload_configs/event_socket.conf.xml "$serverAddr/init/$serverId/es"
-
 
 echo "install done"
 
