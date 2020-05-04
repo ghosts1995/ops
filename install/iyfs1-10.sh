@@ -40,4 +40,7 @@ curl -s "$serverAddr/init/$serverId/install"
 
 chown -R freeswitch:daemon /etc/freeswitch
 
+mkdir -p /recordings
+chown -R freeswitch:daemon /recordings
+
 systemctl start freeswitch
