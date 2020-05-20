@@ -5,9 +5,10 @@ yum -y update
 yum -y install wget bind-utils jwhois mtr traceroute tcpdump tshark
 yum install -y https://files.freeswitch.org/repo/yum/centos-release/freeswitch-release-repo-0-1.noarch.rpm
 yum install -y freeswitch-config-vanilla freeswitch-lang-* freeswitch-sounds-*
+yum install -y freeswitch-event-format-cdr freeswitch-xml-curl
 
-rpm -ivh https://files.freeswitch.org/repo/yum/centos-release/7/x86_64/freeswitch-xml-curl-1.10.2.release.4-1.el7.x86_64.rpm
-rpm -ivh https://files.freeswitch.org/repo/yum/centos-release/7/x86_64/freeswitch-event-format-cdr-1.10.2.release.4-1.el7.x86_64.rpm
+#rpm -ivh https://files.freeswitch.org/repo/yum/centos-release/7/x86_64/freeswitch-xml-curl-1.10.2.release.4-1.el7.x86_64.rpm
+#rpm -ivh https://files.freeswitch.org/repo/yum/centos-release/7/x86_64/freeswitch-event-format-cdr-1.10.2.release.4-1.el7.x86_64.rpm
 
 systemctl enable freeswitch
 
@@ -33,6 +34,10 @@ curl -o /etc/freeswitch/autoload_configs/xml_curl.conf.xml "$serverAddr/init/$se
 
 rm -rf /etc/freeswitch/autoload_configs/event_socket.conf.xml
 curl -o /etc/freeswitch/autoload_configs/event_socket.conf.xml "$serverAddr/init/$serverId/es"
+
+rm -rf /etc/freeswitch/autoload_configs/acl.conf.xml
+curl -o /etc/freeswitch/autoload_configs/acl.conf.xml "$serverAddr/init/$serverId/acl"
+
 
 echo "install done"
 
