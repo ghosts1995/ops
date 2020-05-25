@@ -64,16 +64,15 @@ echo "load system service"
 
 systemctl --system daemon-reload
 
-cd /usr/local
-useradd --system --home-dir /usr/local/freeswitch -G daemon freeswitch
-passwd -l freeswitch
-chown -R freeswitch:daemon /usr/local/freeswitch/ 
-chmod -R 770 /usr/local/freeswitch/
-chmod -R 750 /usr/local/freeswitch/bin/*
-mkdir /var/run/freeswitch
-chown -R freeswitch:daemon  /var/run/freeswitch
-ln -s /usr/local/freeswitch/bin/freeswitch /usr/bin/
-
+# cd /usr/local
+# useradd --system --home-dir /usr/local/freeswitch -G daemon freeswitch
+# passwd -l freeswitch
+# chown -R freeswitch:daemon /usr/local/freeswitch/ 
+# chmod -R 770 /usr/local/freeswitch/
+# chmod -R 750 /usr/local/freeswitch/bin/*
+# mkdir /var/run/freeswitch
+# chown -R freeswitch:daemon  /var/run/freeswitch
+# ln -s /usr/local/freeswitch/bin/freeswitch /usr/bin/
 
 systemctl start freeswitch.service
 
