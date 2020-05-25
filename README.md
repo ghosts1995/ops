@@ -35,7 +35,8 @@ yum -y install wget jwhois bind-utils tmux screen mtr traceroute tcpdump tshark
 
 
 > install fs1.6
->>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/ifs1.6.sh | bash
+>> curl -o ifs1.6.sh https://raw.githubusercontent.com/ghosts1995/ops/master/install/ifs1.6.sh && chmod +x ifs1.6.sh && ./ifs1.6.sh
+<!-- >>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/ifs1.6.sh | bash -->
 
 ***
 

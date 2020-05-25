@@ -6,7 +6,7 @@ yum clean all
 yum makecache
 yum -y install epel-release 
 yum -y update
-yum -y install wget jwhois bind-utils tmux screen mtr traceroute
+yum -y install wget jwhois bind-utils tmux screen mtr traceroute tcpdump tshark
 
 wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igit.sh | bash && source /etc/bashrc && git --version
 
