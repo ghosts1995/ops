@@ -1,5 +1,7 @@
 cd /etc/yum.repos.d/
 
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bar
+
 ```text
 
 [base]
@@ -40,10 +42,13 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
 ```
 
+yum clean all && yum clean metadata && yum clean dbcache && yum makecache && yum update
+
 
 ### 清除
 yum clean all
 ### 将服务器上的软件包信息缓存到本地,以提高搜索安装软件的速度
-yum makecache     
+yum makecache  
+yum -y update   
 ### 测试域名是否可用
 yum install -y vim*    
