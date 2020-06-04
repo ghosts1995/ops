@@ -30,8 +30,8 @@ yum -y install wget jwhois bind-utils tmux screen mtr traceroute tcpdump tshark
 >> install docker and docker-compose
 >>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/idocker | bash
 
-> set elang
->>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/elang.sh | bash
+> server init
+>>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/init.sh | bash
 
 
 > install fs1.6
