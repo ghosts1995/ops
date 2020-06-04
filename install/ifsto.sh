@@ -6,7 +6,7 @@ yum clean all
 yum makecache
 yum -y install epel-release 
 yum -y update
-yum -y install wget jwhois bind-utils tmux screen mtr traceroute tcpdump tshark rpcbind nfs
+yum -y install wget jwhois bind-utils tmux mtr traceroute tcpdump tshark rpcbind nfs
 
 systemctl enable rpcbind
 systemctl enable nfs
@@ -29,6 +29,7 @@ cd /usr/local/src/freeswitch
 ./bootstrap.sh 
 
 ./configure
+
 make 
 make install
 make cd-sounds-install
