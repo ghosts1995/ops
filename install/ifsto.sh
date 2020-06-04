@@ -152,12 +152,11 @@ echo "mkdir recordings"
 
 mkdir -p /usr/local/freeswitch/recordings/$serverId
 
-echo /usr/local/freeswitch/recordings/$serverId $serverAddr/32(ro,sync,no_root_squash,no_all_squash) >> /etc/exports
+echo "/usr/local/freeswitch/recordings/$serverId $serverAddr/32(ro,sync,no_root_squash,no_all_squash)" >> /etc/exports
 
 exportfs -r
 systemctl restart nfs
 showmount -e localhost
-
 
 curl -s "$serverAddr/init/$serverId/install"
 
