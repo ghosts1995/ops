@@ -115,9 +115,11 @@ systemctl status freeswitch.service
 
 serverId=$(sed -n 1p /var/log/voip.log)
 serverAddr=$(sed -n 1p /var/log/voipAddr.log)
+hostIp=$(sed -n 1p /var/log/voipIp.log)
 
 echo $serverId
 echo $serverAddr
+echo $hostIp
 
 FSCONFDIR="/usr/local/freeswitch/conf"
 
@@ -152,7 +154,7 @@ echo "mkdir recordings"
 
 mkdir -p /usr/local/freeswitch/recordings/$serverId
 
-echo "/usr/local/freeswitch/recordings/$serverId $serverAddr/32(ro,sync,no_root_squash,no_all_squash)" >> /etc/exports
+echo "/usr/local/freeswitch/recordings/$serverId $hostIp/32(ro,sync,no_root_squash,no_all_squash)" >> /etc/exports
 
 exportfs -r
 systemctl restart nfs
