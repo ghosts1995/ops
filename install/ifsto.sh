@@ -162,7 +162,9 @@ showmount -e localhost
 
 curl -s "$serverAddr/init/$serverId/install"
 
-echo "install done"
 
+systemctl restart freeswitch.service
+
+echo "install done"
 
 
