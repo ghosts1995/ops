@@ -1,5 +1,12 @@
 #!/bin/bash
 
+yum -y install epel-release 
+yum -y update
+yum -y install jwhois bind-utils tmux screen mtr traceroute tcpdump tshark
+
+wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igit.sh | bash && source /etc/bashrc && git --version
+
+
 rm -rf /etc/profile.d/locale.sh
 
 echo "export LC_CTYPE=en_US.UTF-8" >> /etc/profile.d/locale.sh
@@ -25,6 +32,7 @@ timedatectl set-ntp yes
 ntpq -p
 
 date
+
 
 
 # /etc/sysctl.conf

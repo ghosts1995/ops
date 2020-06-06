@@ -31,7 +31,7 @@ yum -y install wget jwhois bind-utils tmux screen mtr traceroute tcpdump tshark
 >>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/idocker | bash
 
 > server init
->>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/init.sh | bash
+>>> yum -y install wget && wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/init.sh | bash
 
 
 > install fs1.6
