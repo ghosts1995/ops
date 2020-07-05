@@ -6,10 +6,17 @@ yum clean all
 yum makecache
 yum -y install epel-release 
 yum -y update
-yum -y install wget jwhois bind-utils tmux mtr traceroute tcpdump tshark rpcbind nfs
+yum -y install iptables
+yum -y install iptables-services
+yum -y install jwhois bind-utils tmux mtr traceroute tcpdump tshark rpcbind nfs
+yum -y install iftop nload
+yum -y install ipset
+
 
 systemctl enable rpcbind
 systemctl enable nfs
+systemctl enable iptables
+
 
 wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igit.sh | bash && source /etc/bashrc && git --version
 
@@ -73,17 +80,24 @@ cd /usr/local/src/freeswitch
 sed -i 's/#applications\/mod_curl/applications\/mod_curl/g' /usr/local/src/freeswitch/modules.conf
 sed -i 's/#xml_int\/mod_xml_curl/xml_int\/mod_xml_curl/g' /usr/local/src/freeswitch/modules.conf
 
+
+#sed -i 's/#say\/mod_say_zh/say\/mod_say_zhl/g' /usr/local/src/freeswitch/modules.conf
+
+#sed -i 's/#applications\/mod_callcenter/applications\/mod_callcenter/g' /usr/local/src/freeswitch/modules.conf
+
+
 ./configure
 
-make mod_xml_curl 
 make mod_xml_curl-install
+
+#make mod_callcenter-install
+#make mod_say_zh-install
 
 #install cdr
 
 sed -i 's/#event_handlers\/mod_format_cdr/event_handlers\/mod_format_cdr/g' /usr/local/src/freeswitch/modules.conf
 ./configure
 make mod_format_cdr-install
-
 
 #install xml g729
 
@@ -107,11 +121,6 @@ echo "install done"
 # chown -R freeswitch:daemon  /var/run/freeswitch
 # ln -s /usr/local/freeswitch/bin/freeswitch /usr/bin/
 
-systemctl enable freeswitch.service
-
-systemctl start freeswitch.service
-
-systemctl status freeswitch.service
 
 serverId=$(sed -n 1p /var/log/voip.log)
 serverAddr=$(sed -n 1p /var/log/voipAddr.log)
@@ -141,6 +150,9 @@ curl -o $FSCONFDIR/autoload_configs/event_socket.conf.xml "$serverAddr/init/$ser
 rm -rf $FSCONFDIR/autoload_configs/acl.conf.xml
 curl -o $FSCONFDIR/autoload_configs/acl.conf.xml "$serverAddr/init/$serverId/acl"
 
+rm -rf $FSCONFDIR/autoload_configs/switch.conf.xml
+curl -o $FSCONFDIR/autoload_configs/switch.conf.xml "$serverAddr/init/$serverId/switch"
+
 rm -rf $FSCONFDIR/directory/default.xml
 curl -o $FSCONFDIR/directory/default.xml "$serverAddr/init/$serverId/directoryDefault"
 
@@ -154,17 +166,169 @@ echo "mkdir recordings"
 
 mkdir -p /usr/local/freeswitch/recordings/$serverId
 
+rm -rf /etc/sysconfig/nfs
+
+tee /etc/sysconfig/nfs <<-'EOF'
+MOUNTD_PORT=6001　　
+STATD_PORT=6002
+LOCKD_TCPPORT=6003
+LOCKD_UDPPORT=6003
+RQUOTAD_PORT=6004
+RPCNFSDARGS=""
+RPCMOUNTDOPTS=""
+STATDARG=""
+SMNOTIFYARGS=""
+RPCIDMAPDARGS=""
+RPCGSSDARGS=""
+GSS_USE_PROXY="yes"
+BLKMAPDARGS=""
+EOF
+
+
 echo "/usr/local/freeswitch/recordings/$serverId $hostIp/32(ro,sync,no_root_squash,no_all_squash)" >> /etc/exports
 
 exportfs -r
-systemctl restart nfs
+
 showmount -e localhost
 
 curl -s "$serverAddr/init/$serverId/install"
 
 
-systemctl restart freeswitch.service
+systemctl restart nfs
 
-echo "install done"
+systemctl enable freeswitch.service
+
+systemctl start freeswitch.service
+
+systemctl status freeswitch.service
 
 
+echo "install done and start "
+
+cd /usr/local/src
+
+ipset create access hash:net hashsize 10000 maxelem 20000000
+
+echo "access"
+
+echo "philippines"
+rm -f ph.zone
+curl -o ph.zone https://www.ipdeny.com/ipblocks/data/countries/ph.zone
+for i in `cat ph.zone`
+do
+    ipset add access $i 
+done
+
+echo "taiwan"
+
+rm -f tw.zone
+curl -o tw.zone https://www.ipdeny.com/ipblocks/data/countries/tw.zone
+for i in `cat tw.zone`
+do
+    ipset add access $i 
+done
+
+echo "thai"
+
+rm -f th.zone
+curl -o th.zone https://www.ipdeny.com/ipblocks/data/countries/th.zone
+for i in `cat th.zone`
+do
+    ipset add access $i 
+done
+
+
+rm -rf /etc/sysconfig/iptables
+
+tee /etc/sysconfig/iptables <<-'EOF'
+*filter
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -m set --match-set access src -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 22 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 80 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 443 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 9998 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 9066 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 9443 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 9906 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 9908 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 5081 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 5061 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 8099 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 5002 -j ACCEPT
+-A INPUT -m set --match-set access src -p udp --dport 5003 -j ACCEPT
+-A INPUT -m set --match-set access src -p udp --dport 9906 -j ACCEPT
+-A INPUT -m set --match-set access src -p udp --dport 9908 -j ACCEPT
+-A INPUT -p udp --dport 3478 -j ACCEPT
+-A INPUT -p udp --dport 3479 -j ACCEPT
+-A INPUT -m set --match-set access src -p udp -m udp --dport 26384:39768 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 111 -j ACCEPT
+-A INPUT -p udp -m udp --dport 111 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 2049 -j ACCEPT
+-A INPUT -p udp -m udp --dport 2049 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 6001:6004 -j ACCEPT
+-A INPUT -p udp -m udp --dport 6001:6004 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 8080 -j ACCEPT
+-A INPUT -m set --match-set access src -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A OUTPUT -o lo -j ACCEPT
+COMMIT
+EOF
+
+chmod +x /etc/sysconfig/iptables
+
+systemctl start iptables
+systemctl status iptables
+
+iptables -L -n
+
+echo "init auth start"
+
+tee /etc/rc.d/init.d/access.sh <<-'EOF'
+#!/bin/bash
+
+echo "add access"
+
+ipset create access hash:net hashsize 10000 maxelem 20000000
+
+echo "philippines"
+rm -f ph.zone
+curl -o ph.zone https://www.ipdeny.com/ipblocks/data/countries/ph.zone
+for i in `cat ph.zone`
+do
+    ipset add access $i 
+done
+
+echo "taiwan"
+
+rm -f tw.zone
+curl -o tw.zone https://www.ipdeny.com/ipblocks/data/countries/tw.zone
+for i in `cat tw.zone`
+do
+    ipset add access $i 
+done
+
+echo "thai"
+
+rm -f th.zone
+curl -o th.zone https://www.ipdeny.com/ipblocks/data/countries/th.zone
+for i in `cat th.zone`
+do
+    ipset add access $i 
+done
+
+EOF
+
+##/etc/rc.d/init.d
+
+chmod +x /etc/rc.d/init.d/access.sh
+
+cd /etc/rc.d/init.d
+
+chkconfig --add access.sh
+
+chkconfig access.sh on
