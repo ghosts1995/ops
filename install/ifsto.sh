@@ -2,16 +2,15 @@
 
 cd /usr/local/src
 
-yum clean all 
-yum makecache
-yum -y install epel-release 
-yum -y update
-yum -y install iptables
-yum -y install iptables-services
-yum -y install jwhois bind-utils tmux mtr traceroute tcpdump tshark rpcbind nfs
+# yum clean all 
+# yum makecache
+# yum -y install epel-release 
+# yum -y update
+yum -y install iptables iptables-services
+# yum -y install jwhois bind-utils tmux mtr traceroute tcpdump tshark 
+yum -y instal rpcbind nfs
 yum -y install iftop nload
 yum -y install ipset
-
 
 systemctl enable rpcbind
 systemctl enable nfs
