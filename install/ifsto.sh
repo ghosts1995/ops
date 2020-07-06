@@ -26,7 +26,7 @@ yum install -y alsa-lib-devel autoconf automake bison broadvoice-devel bzip2 cur
 yum install -y gcc-c++ alsa-lib-devel autoconf automake bison bzip2 curl-devel e2fsprogs-devel flite-devel gdbm-devel gnutls-devel ldns-devel libcurl-devel libedit-devel libidn-devel libjpeg-devel libmemcached-devel libogg-devel libsndfile-devel libtiff-devel libtheora-devel libtool libvorbis-devel libxml2-devel lua-devel lzo-devel mongo-c-driver-devel ncurses-devel net-snmp-devel openssl-devel opus-devel pcre-devel perl perl-ExtUtils-Embed pkgconfig portaudio-devel postgresql-devel python-devel soundtouch-devel speex-devel sqlite-devel unbound-devel unixODBC-devel libuuid-devel which yasm zlib-devel
 
 
-git clone -b aivoip https://github.com/ghosts1995/freeswitch.git freeswitch
+git clone -b v1.6 https://github.com/ghosts1995/freeswitch.git freeswitch
 
 chmod -R 777 /usr/local/src/freeswitch
 
