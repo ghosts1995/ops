@@ -288,8 +288,10 @@ iptables -L -n
 
 echo "init auth start"
 
-tee /etc/rc.d/init.d/access.sh <<-'EOF'
+tee /etc/rc.d/init.d/access <<-'EOF'
 #!/bin/bash
+#chkconfig: - 85 15
+#description: access is a World iptables server. It is used to serve
 
 echo "add access"
 
@@ -325,10 +327,9 @@ EOF
 
 ##/etc/rc.d/init.d
 
-chmod +x /etc/rc.d/init.d/access.sh
+chmod +x /etc/rc.d/init.d/access
 
 cd /etc/rc.d/init.d
 
-chkconfig --add access.sh
-
-chkconfig access.sh on
+chkconfig --add access
+chkconfig access on
