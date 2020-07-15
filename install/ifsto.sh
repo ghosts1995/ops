@@ -322,6 +322,14 @@ do
     ipset add access $i 
 done
 
+
+rm -f my.zone
+curl -o my.zone https://www.ipdeny.com/ipblocks/data/countries/my.zone
+for i in `cat my.zone`
+do
+    ipset add access $i 
+done
+
 EOF
 
 ##/etc/rc.d/init.d
