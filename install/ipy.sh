@@ -7,11 +7,11 @@ echo "cd dir"
 cd /usr/local/src
 mkdir -p /usr/local/python3
 
-wget --no-check-certificate https://www.python.org/ftp/python/3.7.6/Python-3.7.6.tgz
+wget --no-check-certificate https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz
 
-tar -xzvf Python-3.7.6.tgz
+tar -xzvf Python-3.7.9.tgz
 
-cd Python-3.7.6
+cd Python-3.7.9
 
 ./configure --prefix=/usr/local/python3
 

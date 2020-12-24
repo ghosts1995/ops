@@ -54,8 +54,8 @@ yum -y install wget jwhois bind-utils tmux screen mtr traceroute tcpdump tshark
 >> yum 安装php7.3 包含swoole
 >>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/iphp7.3.sh | bash
 
->> centos7.x 安装python3.7.6
->>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/ipy3-7-6.sh | bash && source /etc/profile
+>> centos7.x 安装python3.7.9
+>>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/ipy.sh | bash && source /etc/profile
 
 >> golang install in version 1.13.8
 >>> wget -qO- https://raw.githubusercontent.com/ghosts1995/ops/master/install/igo.sh | bash && source /etc/profile && go env
